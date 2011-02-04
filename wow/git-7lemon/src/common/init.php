@@ -1,6 +1,6 @@
 <?php
 
-$db = new mysqli('localhost', 'root', 'root', 'web_test');
+$db = new mysqli('localhost', 'root', 'shoutao', 'db');
 if (mysqli_connect_errno()){
 	echo "Error: Could not connect to database.";
 	exit;

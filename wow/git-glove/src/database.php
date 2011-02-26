@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 </head>
 <body>
-<h1>副本信息&nbsp&nbsp&nbsp<a class="button" href="welcome.php?action=logout">回去看看还有啥</a></h1>
+<h1>副本信息&nbsp&nbsp&nbsp<a class="button" href="index.php">回去看看还有啥</a></h1>
 
 
 <?php

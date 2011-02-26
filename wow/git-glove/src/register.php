@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include('inc/common.inc.php');
 
 
@@ -20,7 +21,7 @@ if(isset($_POST['go']))
 	$r = mysql_query($sql);
 
 	if($r)
-		header('Location: index.php');
+		header('Location: login.php');
 	else
 		echo 'fuck';
 }

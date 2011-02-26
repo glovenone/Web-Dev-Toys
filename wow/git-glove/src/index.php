@@ -1,70 +1,47 @@
 <?php
+session_start();
 
 include('inc/common.inc.php');
 
-if(isset($_POST['go']))
-{
-	$name = $_POST['name'];
-	$password = $_POST['password'];
-	
-	$sql = "
-		SELECT 
+$sql = "SELECT 
 		*
-		FROM
-		users 
-		WHERE name='$name' and password = '$password'
-		";
-	$r = mysql_query($sql);
-	
-	$user = mysql_fetch_array($r);
+	FROM 
+		users";
 
-	if($user)
+$result = mysql_query($sql);
+
+$items = array();
+
+if($result)
+{
+	while( ($row = mysql_fetch_array($result) ) )
 	{
-		$_SESSION['logged_user'] = $user;
-		header('Location: welcome.php');
+		$items[] = $row;
 	}
-	else
-		echo '&nbsp&nbsp Sorry,your "Name" or "Password" is worng, please try again or register.';
+	
 }
+
 ?>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html charset=utf8"/>
-	<link rel="stylesheet" href="css/login.style.css" type="text/css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<title>注册</title>
-
 <body>
-	<form action="" method="post">
-	<body background="images/1.jpg">
-<div id = "login">
-<h1>Login</h1>
-<div id = "register">
-	<h2 class = "register"><a href="register.php">Register</a></h2>
-</div>
-<table>
-	<tr><th>Name</th><td><input type="text" name="name" /></td></tr>
-	<tr><th>Password</th><td><input type="password" name="password" /></td></tr>
-	<tr><td colspan="2" align="center"><input type="submit" name="go" value="Submit" /></td></tr>
-</table>
-</form>
+<h2>欢迎, <?php echo $_SESSION['logged_user']['name']?>!</h2>
+<div class="meta">
+<ul>
+	<li><a class="button" href="logout.php">没劲，闪人了(退出)</a></li>
+	</br>
+	<li><a class="button" href="choose.php">随便玩玩</a></li>
+	</br>
+	<li><a class="button" href="status.php">查看我的状态</a></li>
+	</br>
+	<li><a class="button" href="database.php">查看数据库</a></li>
+	</br>
+	<li><a class="button" href="register.php">太好玩了，再注册个帐号</a></li>
+	</br>
+</ul>
 </div>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

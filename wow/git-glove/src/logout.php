@@ -1,0 +1,10 @@
+<?
+session_start();
+if(isset($_SESSION['logged_user']))
+{
+session_unregister('logged_user');
+}
+session_destroy;
+header("Location:login.php");//你想登出后用户返回的页面
+exit;
+?>
